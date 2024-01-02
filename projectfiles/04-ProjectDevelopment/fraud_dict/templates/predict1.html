@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://image.slidesdocs.com/responsive-images/slides/0-simple-geometry-department-general-work-report-summary-powerpoint-background_14ce3ec175__960_540.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.936);
+            border: 5px solid #ccccccda;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .form {
+            margin: 20px;
+        }
+
+        h2 {
+            margin: 0 0 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .side {
+            flex: 1;
+            padding: 10px;
+            margin-right: 10px; /* Add margin for spacing */
+        }
+
+        .side:last-child {
+            margin-right: 0; /* Remove margin for the last side element */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccce1;
+            border-radius: 5px;
+        }
+    </style>
+    <title>Payment Fraud Details</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <h2>Payment Fraud Details</h2>
+             <form method="POST" action="/predict">
+            <div class="input-group">
+                <div class="side">
+                    <label for="step">Step</label>
+                    <input type="text" name="step" id="step" placeholder="Enter Step">
+                </div>
+                <div class="side">
+                    <label for="Type">Type</label>
+                    <select name="Type">
+                        <option value="1">CASH_OUT</option>
+                        <option value="0">CASH_IN</option>
+                        <option value="2">DEBIT</option>
+                        <option value="3">PAYMENT</option>
+                        <option value="4">TRANSFER</option>
+                    </select>
+                </div>
+                <div class="side">
+                    <label for="amount">Amount</label>
+                    <input type="text" name="amount" id="amount" placeholder="Total Amount of Transaction">
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="side">
+                    <label for="name-org">Name Org</label>
+                    <input type="text" id="name-org" placeholder="Sender Name">
+                </div>
+                <div class="side">
+                    <label for="oldbalanceOrg">Old Balance Org</label>
+                    <input type="text" name="oldbalanceOrg" id="oldbalanceorg" placeholder="Sender Balance before Transaction">
+                </div>
+                <div class="side">
+                    <label for="newbalanceOrig">New Balance Org</label>
+                    <input type="text" name="newbalanceOrig" id="newbalanceOrig" placeholder="Sender Balance after Transaction">
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="side">
+                    <label for="name-dest">Name Dest</label>
+                    <input type="text" id="name-dest" placeholder="Receiver Name">
+                </div>
+                <div class="side">
+                    <label for="oldbalanceDest">Old Balance Dest</label>
+                    <input type="text" name="oldbalanceDest" id="oldbalanceDest" placeholder="Receiver Balance before Transaction">
+                </div>
+                <div class="side">
+                    <label for="newbalanceDest">New Balance Dest</label>
+                    <input type="text" name="newbalanceDest" id="newbalanceDest" placeholder="Receiver Balance after Transaction">
+                </div>
+            </div>
+             <input type="submit" value="Predict">
+             </form> 
+        </div>
+        <p id="prediction-result">Prediction result: {{ prediction }}</p>
+    </div>
+</body>
+</html>
